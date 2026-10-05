@@ -1,0 +1,1764 @@
+/* ============================================
+   ESTILOS: look & feel del juego
+   ============================================ */
+
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0f1720;
+    color: #e6edf3;
+    padding-top: 200px;
+}
+
+/* ============================================
+   HEADER FIJO
+   ============================================ */
+
+#header-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    background: #0f1720;
+    border-bottom: 2px solid #1f2d3d;
+    padding: 12px 20px 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.header-titulo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-top h1 {
+    color: #4ade80;
+    letter-spacing: 3px;
+    font-size: 1.5em;
+}
+
+.header-botones {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-header {
+    background: #16202b;
+    color: #8b9bb0;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-header:hover {
+    background: #1f2d3d;
+    color: #e6edf3;
+    border-color: #4ade80;
+}
+
+.header-panel {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.panel-item-chico {
+    background: #16202b;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 80px;
+}
+
+.panel-label {
+    font-size: 0.65em;
+    color: #8b9bb0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panel-valor-chico {
+    font-size: 1em;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+.header-fecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 0;
+    flex-wrap: wrap;
+}
+
+#titulo-fecha {
+    color: #4ade80;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+#btn-avanzar {
+    background: #4ade80;
+    color: #0f1720;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#btn-avanzar:hover:not(:disabled) {
+    background: #22c55e;
+    transform: translateY(-1px);
+}
+
+#btn-avanzar:disabled {
+    background: #334;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   BARRA DE PESTAÑAS
+   ============================================ */
+
+#barra-pestanias {
+    display: flex;
+    gap: 4px;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.pestania {
+    background: transparent;
+    color: #8b9bb0;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: inherit;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.pestania:hover {
+    color: #e6edf3;
+}
+
+.pestania.activa {
+    color: #4ade80;
+    border-bottom-color: #4ade80;
+}
+
+/* ============================================
+   CONTENIDO DE PESTAÑAS
+   ============================================ */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pestania-contenido {
+    display: none;
+}
+
+.pestania-contenido.activa {
+    display: block;
+    animation: fadeInPestania 0.25s ease-out;
+}
+
+@keyframes fadeInPestania {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    background: #16202b;
+    border: 1px solid #1f2d3d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #4ade80;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid #1f2d3d;
+}
+
+th {
+    color: #8b9bb0;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}
+
+tbody tr:hover {
+    background: #1c2937;
+}
+
+/* ============================================
+   IMÁGENES Y PLACEHOLDERS
+   ============================================ */
+
+.img-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    vertical-align: middle;
+    position: relative;
+}
+
+.img-wrap.img-wrap-redondo {
+    border-radius: 50%;
+}
+
+.img-wrap .img-placeholder {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    user-select: none;
+    line-height: 1;
+}
+
+.img-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.celda-equipo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.nombre-equipo-tabla {
+    flex: 1;
+}
+
+/* ============================================
+   VISOR DE RESULTADOS
+   ============================================ */
+
+.visor-controles {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-nav {
+    background: #1f2d3d;
+    color: #e6edf3;
+    border: 1px solid #2a3f55;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.btn-nav:hover:not(:disabled) {
+    background: #2a3f55;
+    border-color: #4ade80;
+}
+
+.btn-nav:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn-nav-texto {
+    font-size: 0.9em;
+}
+
+.visor-fecha-titulo {
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 1.05em;
+    min-width: 130px;
+    text-align: center;
+}
+
+.visor-liga {
+    margin-bottom: 20px;
+}
+
+.visor-liga-titulo {
+    color: #4ade80;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #1f2d3d;
+    padding-bottom: 6px;
+}
+
+.resultado-partido {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #1f2d3d;
+    font-size: 0.95em;
+}
+
+.resultado-partido:last-child {
+    border-bottom: none;
+}
+
+.res-local {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    text-align: right;
+    color: #e6edf3;
+}
+
+.res-visitante {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+    color: #e6edf3;
+}
+
+.res-nombre {
+    flex-shrink: 1;
+}
+
+.res-marcador {
+    background: #0f1720;
+    border: 1px solid #2a3f55;
+    border-radius: 5px;
+    padding: 3px 12px;
+    font-weight: bold;
+    color: #4ade80;
+    min-width: 60px;
+    text-align: center;
+}
+
+.visor-vacio {
+    color: #8b9bb0;
+    text-align: center;
+    padding: 20px;
+}
+
+.incidencia-partido {
+    grid-column: 1 / -1;
+    background: rgba(251, 191, 36, 0.1);
+    border-left: 3px solid #fbbf24;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 6px;
+    font-size: 0.85em;
+    color: #fbbf24;
+    font-style: italic;
+}
+
+/* ============================================
+   SECCIÓN DE ÁRBITROS
+   ============================================ */
+
+#seccion-arbitros {
+    background: linear-gradient(135deg, #1e1a2a, #16101a);
+    border: 1px solid #3a2a55;
+}
+
+#seccion-arbitros h2 { color: #c084fc; }
+
+#info-var {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    color: #c8d4e0;
+}
+
+#info-var.var-activo { border-left: 4px solid #4ade80; }
+#info-var.var-inactivo { border-left: 4px solid #8b9bb0; }
+
+.var-etiqueta {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 8px;
+}
+
+.var-etiqueta.activo { background: #4ade80; color: #0f1720; }
+.var-etiqueta.inactivo { background: #334; color: #8b9bb0; }
+
+.incidencia {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #fbbf24;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.incidencia .inc-titulo {
+    color: #fbbf24;
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.incidencia .inc-desc { color: #c8d4e0; }
+
+.incidencia .inc-meta {
+    color: #8b9bb0;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+#lista-arbitros-destacados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.arbitro-card {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 10px 14px;
+}
+
+.arbitro-card .arb-nombre {
+    color: #c084fc;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-bottom: 6px;
+}
+
+.arbitro-card .arb-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: #8b9bb0;
+}
+
+.arbitro-card .arb-nivel {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+/* ============================================
+   RANKING DE ÁRBITROS
+   ============================================ */
+
+#ranking-arbitros {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #c084fc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#ranking-arbitros h3 {
+    color: #c084fc;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.tabla-ranking-arbitros {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.tabla-ranking-arbitros th {
+    color: #8b9bb0;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 6px 8px;
+    border-bottom: 1px solid #1f2d3d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabla-ranking-arbitros td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #1a2530;
+    text-align: center;
+    color: #e6edf3;
+}
+
+.tabla-ranking-arbitros tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-ranking-arbitros td:nth-child(2) {
+    text-align: left;
+    font-weight: bold;
+}
+
+.confiabilidad-alta { color: #4ade80; font-weight: bold; }
+.confiabilidad-media { color: #eab308; font-weight: bold; }
+.confiabilidad-baja { color: #ef4444; font-weight: bold; }
+
+.arb-sancionado {
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-left: 6px;
+}
+
+.arb-incidencias {
+    color: #f97316;
+    font-weight: bold;
+}
+
+/* ============================================
+   SECCIÓN DE FINANZAS
+   ============================================ */
+
+#seccion-finanzas {
+    background: linear-gradient(135deg, #1a2e1a, #0f1f0f);
+    border: 1px solid #2a5530;
+}
+
+#seccion-finanzas h2 { color: #86efac; }
+
+.resumen-fin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.resumen-item {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 12px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.resumen-item .res-label {
+    font-size: 0.75em;
+    color: #8b9bb0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resumen-item .res-valor {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #86efac;
+}
+
+.resumen-item .res-valor.negativo { color: #ef4444; }
+
+.sponsor-actual {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #86efac;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sponsor-info { flex: 1; }
+
+.sponsor-info .sp-nombre {
+    color: #86efac;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.sponsor-info .sp-meta {
+    color: #8b9bb0;
+    font-size: 0.85em;
+}
+
+.clubes-deuda-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.club-deuda {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.club-deuda .cd-nombre {
+    flex: 1;
+    min-width: 180px;
+    font-weight: bold;
+    color: #e6edf3;
+}
+
+.club-deuda .cd-liga {
+    color: #8b9bb0;
+    font-size: 0.85em;
+}
+
+.club-deuda .cd-nivel {
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cd-nivel.ajustado { background: #eab308; color: #0f1720; }
+.cd-nivel.crisis { background: #f97316; color: #0f1720; }
+.cd-nivel.fundido { background: #ef4444; color: #fff; }
+
+.club-deuda .cd-rescates {
+    color: #8b9bb0;
+    font-size: 0.8em;
+}
+
+.btn-rescatar {
+    background: #22c55e;
+    color: #0f1720;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-rescatar:hover { background: #16a34a; }
+.btn-rescatar:disabled { background: #334; color: #666; cursor: not-allowed; }
+
+.tabla-historial {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.tabla-historial .balance-positivo { color: #86efac; font-weight: bold; }
+.tabla-historial .balance-negativo { color: #ef4444; font-weight: bold; }
+
+/* ============================================
+   PANEL DE ENCUESTA
+   ============================================ */
+
+#panel-encuesta {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #eab308;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.encuesta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.encuesta-titulo {
+    color: #eab308;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.encuesta-fecha {
+    color: #8b9bb0;
+    font-size: 0.8em;
+}
+
+.encuesta-barras {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.encuesta-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.encuesta-label {
+    min-width: 110px;
+    font-size: 0.85em;
+    color: #c8d4e0;
+}
+
+.encuesta-barra-wrap {
+    flex: 1;
+    height: 20px;
+    background: #1f2d3d;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.encuesta-barra {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s;
+}
+
+.encuesta-barra.aprobacion {
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+}
+
+.encuesta-barra.desaprobacion {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.encuesta-porcentaje {
+    min-width: 45px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.encuesta-porcentaje.pos { color: #4ade80; }
+.encuesta-porcentaje.neg { color: #ef4444; }
+
+.encuesta-motivos {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #1f2d3d;
+}
+
+.encuesta-motivos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.encuesta-motivos li {
+    color: #c8d4e0;
+    font-size: 0.85em;
+    padding: 4px 0;
+    border-bottom: 1px solid #1a2530;
+}
+
+.encuesta-motivos li:last-child { border-bottom: none; }
+
+.encuesta-motivos li::before {
+    content: "· ";
+    color: #eab308;
+    font-weight: bold;
+}
+
+/* ============================================
+   MODAL DE SPONSORS
+   ============================================ */
+
+#lista-sponsors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.sponsor-card {
+    background: #0f1720;
+    border: 1px solid #2a3f55;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    color: #e6edf3;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.sponsor-card:hover {
+    background: #1c2937;
+    border-color: #86efac;
+    transform: translateY(-2px);
+}
+
+.sponsor-card .sc-nombre {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #86efac;
+    text-align: center;
+}
+
+.sponsor-card .sc-rubro {
+    display: inline-block;
+    background: #1f2d3d;
+    color: #8b9bb0;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sponsor-card .sc-montos {
+    display: block;
+    font-size: 0.9em;
+    color: #c8d4e0;
+    line-height: 1.6;
+    border-top: 1px solid #1f2d3d;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.sponsor-card .sc-montos strong { color: #86efac; }
+
+.sponsor-card .sc-popularidad {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.sc-popularidad.popular { background: #4ade80; color: #0f1720; }
+.sc-popularidad.neutral { background: #334; color: #8b9bb0; }
+.sc-popularidad.polemico { background: #f97316; color: #0f1720; }
+
+/* ============================================
+   PANEL RANKING FIFA
+   ============================================ */
+
+#panel-ranking-fifa {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #38bdf8;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.ranking-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ranking-puesto {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #38bdf8;
+    line-height: 1;
+}
+
+.ranking-label {
+    color: #8b9bb0;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ranking-detalle {
+    color: #8b9bb0;
+    font-size: 0.85em;
+}
+
+.ranking-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ranking-badge.top { background: #38bdf8; color: #0f1720; }
+.ranking-badge.ok { background: #4ade80; color: #0f1720; }
+.ranking-badge.medio { background: #eab308; color: #0f1720; }
+.ranking-badge.bajo { background: #ef4444; color: #fff; }
+
+.ranking-historial {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+.ranking-hist-item {
+    color: #8b9bb0;
+}
+
+.ranking-hist-item .subida { color: #4ade80; font-weight: bold; }
+.ranking-hist-item .bajada { color: #ef4444; font-weight: bold; }
+
+/* ============================================
+   SECCIÓN DE SELECCIÓN
+   ============================================ */
+
+#seccion-seleccion {
+    background: linear-gradient(135deg, #1a2a3a, #16202b);
+    border: 1px solid #2a3f55;
+}
+
+#info-dt-seleccion {
+    color: #8b9bb0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dt-info-nombre {
+    font-weight: bold;
+    color: #e6edf3;
+    font-size: 1.05em;
+}
+
+.amistoso {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #4ade80;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+}
+
+.amistoso.derrota { border-left-color: #ef4444; }
+.amistoso.empate { border-left-color: #eab308; }
+
+.amistoso .amistoso-marcador {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #e6edf3;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.amistoso .amistoso-efectos {
+    font-size: 0.85em;
+    color: #8b9bb0;
+}
+
+.amistoso .efecto-positivo { color: #4ade80; }
+.amistoso .efecto-negativo { color: #ef4444; }
+
+/* ============================================
+   SECCIÓN COPA AMÉRICA
+   ============================================ */
+
+#seccion-copa {
+    background: linear-gradient(135deg, #2a2018, #1a1410);
+    border: 1px solid #4a3a20;
+}
+
+#seccion-copa h2 { color: #fbbf24; }
+
+.copa-resultado-final {
+    background: #0f1720;
+    border-left: 4px solid #fbbf24;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.copa-resultado-final h3 {
+    color: #fbbf24;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.copa-fase { margin-bottom: 18px; }
+
+.copa-fase h4 {
+    color: #8b9bb0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.partido-copa {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 6px;
+}
+
+.partido-copa .marcador {
+    font-weight: bold;
+    color: #e6edf3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.partido-copa .penales {
+    color: #fbbf24;
+    font-size: 0.85em;
+    margin-left: 8px;
+}
+
+.tabla-grupo-copa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.tabla-grupo-copa th,
+.tabla-grupo-copa td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #1f2d3d;
+    text-align: center;
+}
+
+.tabla-grupo-copa th {
+    color: #8b9bb0;
+    font-size: 0.8em;
+}
+
+.tabla-grupo-copa td:nth-child(2) { text-align: left; }
+
+.tabla-grupo-copa .celda-equipo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.titulo-grupo {
+    color: #fbbf24;
+    font-size: 1em;
+    margin: 15px 0 8px 0;
+}
+
+/* ============================================
+   SECCIÓN CONTINENTALES
+   ============================================ */
+
+#seccion-continentales {
+    background: linear-gradient(135deg, #1a2a2a, #0f1a1a);
+    border: 1px solid #2a5545;
+}
+
+#seccion-continentales h2 { color: #2dd4bf; }
+
+.cont-torneo { margin-bottom: 25px; }
+
+.cont-torneo h3 {
+    color: #2dd4bf;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #1f2d3d;
+    padding-bottom: 8px;
+}
+
+.cont-club {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cont-club .cont-nombre {
+    flex: 1;
+    min-width: 150px;
+    font-weight: bold;
+    color: #e6edf3;
+}
+
+.cont-club .cont-etapa {
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cont-etapa.campeon { background: #fbbf24; color: #0f1720; }
+.cont-etapa.final { background: #a78bfa; color: #fff; }
+.cont-etapa.semis { background: #38bdf8; color: #0f1720; }
+.cont-etapa.cuartos { background: #4ade80; color: #0f1720; }
+.cont-etapa.octavos { background: #94a3b8; color: #0f1720; }
+.cont-etapa.grupos { background: #475569; color: #fff; }
+
+.cont-club .cont-rival {
+    color: #8b9bb0;
+    font-size: 0.85em;
+}
+
+.cont-resumen {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #2dd4bf;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.cont-resumen p {
+    color: #c8d4e0;
+    margin-bottom: 8px;
+}
+
+.cont-resumen strong { color: #2dd4bf; }
+
+/* ============================================
+   SECCIÓN NOTICIAS
+   ============================================ */
+
+#seccion-noticias {
+    background: linear-gradient(135deg, #2a1a2a, #1a101a);
+    border: 1px solid #553a55;
+}
+
+#seccion-noticias h2 { color: #f472b6; }
+
+.noticia {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #f472b6;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    animation: fadeInNoticia 0.3s ease-out;
+}
+
+@keyframes fadeInNoticia {
+    from { opacity: 0; transform: translateX(-6px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.noticia .not-medio {
+    display: inline-block;
+    background: #f472b6;
+    color: #0f1720;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.noticia .not-titulo {
+    color: #e6edf3;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.noticia .not-cuerpo {
+    color: #c8d4e0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.noticia .not-fecha {
+    color: #8b9bb0;
+    font-size: 0.75em;
+    margin-top: 6px;
+}
+
+.noticia.critica { border-left-color: #ef4444; }
+.noticia.critica .not-medio { background: #ef4444; color: #fff; }
+
+.noticia.escandalo { border-left-color: #f97316; }
+.noticia.escandalo .not-medio { background: #f97316; color: #0f1720; }
+
+.noticia.elogio { border-left-color: #4ade80; }
+.noticia.elogio .not-medio { background: #4ade80; color: #0f1720; }
+
+.noticia.rumor { border-left-color: #eab308; }
+.noticia.rumor .not-medio { background: #eab308; color: #0f1720; }
+
+.noticia.ironica { border-left-color: #a78bfa; }
+.noticia.ironica .not-medio { background: #a78bfa; color: #0f1720; }
+
+/* ============================================
+   MODALES
+   ============================================ */
+
+.modal-oculto { display: none; }
+
+#modal-decision,
+#modal-intro,
+#modal-dt,
+#modal-fin,
+#modal-var,
+#modal-incidencia,
+#modal-sponsors,
+#modal-evento,
+#modal-bienvenida,
+#modal-designacion,
+#modal-conferencia {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+#modal-decision:not(.modal-oculto),
+#modal-intro:not(.modal-oculto),
+#modal-dt:not(.modal-oculto),
+#modal-fin:not(.modal-oculto),
+#modal-var:not(.modal-oculto),
+#modal-incidencia:not(.modal-oculto),
+#modal-sponsors:not(.modal-oculto),
+#modal-evento:not(.modal-oculto),
+#modal-bienvenida:not(.modal-oculto),
+#modal-designacion:not(.modal-oculto),
+#modal-conferencia:not(.modal-oculto) {
+    display: flex;
+}
+
+.modal-caja {
+    background: #16202b;
+    border: 2px solid #4ade80;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fadeInModal 0.25s ease-out;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#modal-evento .modal-caja { border-color: #f472b6; }
+#modal-evento .modal-caja h3 { color: #f472b6; }
+
+#modal-designacion .modal-caja {
+    border-color: #c084fc;
+    max-width: 700px;
+}
+
+#modal-designacion .modal-caja h3 { color: #c084fc; }
+
+#designacion-partido {
+    color: #e6edf3;
+    font-size: 1.05em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#designacion-opciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.arbitro-candidato {
+    background: #0f1720;
+    border: 1px solid #2a3f55;
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    color: #e6edf3;
+    font-family: inherit;
+}
+
+.arbitro-candidato:hover {
+    background: #1c2937;
+    border-color: #c084fc;
+    transform: translateY(-2px);
+}
+
+.arbitro-candidato .ac-nombre {
+    color: #c084fc;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.arbitro-candidato .ac-nivel {
+    font-size: 0.85em;
+    color: #8b9bb0;
+    margin-bottom: 4px;
+}
+
+.arbitro-candidato .ac-nivel strong { color: #4ade80; }
+
+.arbitro-candidato .ac-estilo {
+    font-size: 0.8em;
+    color: #8b9bb0;
+    margin-bottom: 8px;
+}
+
+.arbitro-candidato .ac-confiabilidad {
+    font-size: 0.85em;
+    font-weight: bold;
+    padding-top: 8px;
+    border-top: 1px solid #1f2d3d;
+}
+
+.modal-caja.modal-ancho { max-width: 900px; }
+
+.modal-caja h3 {
+    color: #4ade80;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.modal-caja p {
+    color: #c8d4e0;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.subtitulo-modal {
+    color: #8b9bb0;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+#decision-opciones,
+#var-opciones,
+#incidencia-opciones,
+#evento-opciones,
+#bienvenida-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.opcion-decision {
+    background: #0f1720;
+    border: 1px solid #2a3f55;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    color: #e6edf3;
+    font-size: 1em;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.opcion-decision:hover {
+    background: #1c2937;
+    border-color: #4ade80;
+    transform: translateX(4px);
+}
+
+.opcion-decision .opcion-resumen {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85em;
+    color: #8b9bb0;
+}
+
+.btn-accion {
+    background: #4ade80;
+    color: #0f1720;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.btn-accion:hover {
+    background: #22c55e;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   LISTA DE CANDIDATOS A DT
+   ============================================ */
+
+#lista-candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.candidato {
+    background: #0f1720;
+    border: 1px solid #2a3f55;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    color: #e6edf3;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.candidato:hover {
+    background: #1c2937;
+    border-color: #4ade80;
+    transform: translateY(-2px);
+}
+
+.candidato .cand-nombre {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+.candidato .cand-perfil {
+    display: inline-block;
+    background: #1f2d3d;
+    color: #8b9bb0;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.candidato .cand-desc {
+    color: #c8d4e0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.candidato .cand-resumen {
+    font-size: 0.85em;
+    color: #4ade80;
+    font-weight: bold;
+    border-top: 1px solid #1f2d3d;
+    padding-top: 8px;
+    width: 100%;
+}
+
+/* ============================================
+   BALANCE Y MOVIMIENTOS EN MODAL DE FIN
+   ============================================ */
+
+.balance {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.balance-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+}
+
+.balance-item span { color: #8b9bb0; }
+
+.balance-item strong {
+    color: #4ade80;
+    font-size: 1.1em;
+}
+
+.movimientos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.mov-grupo {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+.mov-titulo {
+    display: block;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.mov-ascenso { color: #4ade80; }
+.mov-descenso { color: #ef4444; }
+.mov-nuevo { color: #fbbf24; }
+
+.mov-item {
+    padding: 5px 0;
+    color: #c8d4e0;
+    font-size: 0.9em;
+    border-bottom: 1px solid #1a2530;
+}
+
+.mov-item:last-child { border-bottom: none; }
+
+.mov-item small {
+    color: #8b9bb0;
+    font-size: 0.85em;
+    margin-left: 6px;
+}
+
+/* ============================================
+   MODAL DE CONFERENCIA DE PRENSA
+   ============================================ */
+
+#modal-conferencia .modal-caja {
+    border-color: #38bdf8;
+    max-width: 800px;
+}
+
+#modal-conferencia .modal-caja h3 {
+    color: #38bdf8;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.conf-periodista {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #38bdf8;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.conf-periodista-icono {
+    font-size: 2.2em;
+    line-height: 1;
+}
+
+.conf-periodista-info {
+    flex: 1;
+}
+
+.conf-periodista-nombre {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 4px;
+}
+
+.conf-periodista-estilo {
+    color: #8b9bb0;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+.conf-pregunta {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.conf-pregunta-texto {
+    color: #e6edf3;
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 3px solid #38bdf8;
+}
+
+.conf-pregunta-numero {
+    color: #38bdf8;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.conf-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.conf-opcion {
+    background: #16202b;
+    border: 1px solid #2a3f55;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    text-align: left;
+    color: #e6edf3;
+    font-size: 0.95em;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.conf-opcion:hover {
+    background: #1c2937;
+    border-color: #38bdf8;
+    transform: translateX(4px);
+}
+
+.conf-opcion .conf-opcion-resumen {
+    display: block;
+    font-size: 0.8em;
+    color: #8b9bb0;
+    margin-top: 4px;
+}
+
+.conf-opcion.ya-elegida {
+    border-color: #4ade80;
+    background: #1a2e1a;
+    cursor: default;
+    transform: none;
+}
+
+.conf-opcion.ya-elegida:hover {
+    background: #1a2e1a;
+    transform: none;
+}
+
+.conf-resumen-final {
+    background: #0f1720;
+    border: 1px solid #1f2d3d;
+    border-left: 4px solid #4ade80;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+    color: #4ade80;
+    font-weight: bold;
+    text-align: center;
+}

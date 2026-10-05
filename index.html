@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AFA Manager</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div id="header-fijo">
+        <div class="header-top">
+            <div class="header-titulo-wrap">
+                <h1>AFA MANAGER</h1>
+                <div class="header-botones">
+                    <button id="btn-mute" class="btn-header" title="Silenciar sonidos">🔊</button>
+                    <button id="btn-nueva-partida" class="btn-header" title="Nueva partida">🔄</button>
+                </div>
+            </div>
+            <div class="header-panel">
+                <div class="panel-item-chico">
+                    <span class="panel-label">Año</span>
+                    <span id="pres-anio" class="panel-valor-chico">1 / 4</span>
+                </div>
+                <div class="panel-item-chico">
+                    <span class="panel-label">Apoyo</span>
+                    <span id="pres-apoyo" class="panel-valor-chico">50</span>
+                </div>
+                <div class="panel-item-chico">
+                    <span class="panel-label">Prestigio</span>
+                    <span id="pres-prestigio" class="panel-valor-chico">50</span>
+                </div>
+                <div class="panel-item-chico">
+                    <span class="panel-label">Caja</span>
+                    <span id="pres-dinero" class="panel-valor-chico">$11.000M</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-fecha">
+            <h2 id="titulo-fecha">Fecha 1</h2>
+            <button id="btn-avanzar">Avanzar fecha ▶</button>
+        </div>
+
+        <nav id="barra-pestanias">
+            <button class="pestania activa" data-pestania="presidencia">🏛️ Presidencia</button>
+            <button class="pestania" data-pestania="ligas">⚽ Ligas</button>
+            <button class="pestania" data-pestania="arbitros">⚖️ Árbitros</button>
+            <button class="pestania" data-pestania="finanzas">💰 Finanzas</button>
+            <button class="pestania" data-pestania="seleccion">🇦🇷 Selección</button>
+            <button class="pestania" data-pestania="copa">🏆 Copa</button>
+            <button class="pestania" data-pestania="continentales">🌎 Continentales</button>
+            <button class="pestania" data-pestania="noticias">📰 Noticias</button>
+        </nav>
+    </div>
+
+    <main>
+
+        <div class="pestania-contenido activa" id="pestania-presidencia">
+            <section id="seccion-presidencia">
+                <h2>🏛️ Presidencia de la AFA</h2>
+                <div id="panel-encuesta"></div>
+                <div id="decisiones-recientes"></div>
+                <p style="color:#8b9bb0;margin-top:15px">
+                    Tus decisiones afectan el apoyo de los clubes, el prestigio internacional y la caja de la AFA.
+                </p>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-ligas">
+            <section id="resultados">
+                <h2>📅 Resultados por fecha</h2>
+                <div id="lista-resultados"></div>
+            </section>
+
+            <section id="tabla">
+                <h2>Tablas de posiciones</h2>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-arbitros">
+            <section id="seccion-arbitros">
+                <h2>⚖️ Cuerpo Arbitral</h2>
+                <div id="info-var"></div>
+                <div id="ranking-arbitros"></div>
+                <div id="incidencias-recientes"></div>
+                <div id="lista-arbitros-destacados"></div>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-finanzas">
+            <section id="seccion-finanzas">
+                <h2>💰 Finanzas</h2>
+                <div id="resumen-financiero"></div>
+                <div id="clubes-deuda"></div>
+                <div id="historial-financiero"></div>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-seleccion">
+            <section id="seccion-seleccion">
+                <h2>🇦🇷 Selección Argentina</h2>
+                <div id="panel-ranking-fifa"></div>
+                <p id="info-dt-seleccion"></p>
+                <div id="lista-amistosos"></div>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-copa">
+            <section id="seccion-copa">
+                <h2>🏆 Copa América</h2>
+                <div id="contenido-copa">
+                    <p>La Copa América se juega al final del Año 1 y del Año 3.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-continentales">
+            <section id="seccion-continentales">
+                <h2>🌎 Torneos Continentales</h2>
+                <div id="contenido-continentales">
+                    <p>La Copa Libertadores y la Sudamericana se juegan al final de cada temporada. Los mejores 8 clubes argentinos de la tabla anual participan.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="pestania-contenido" id="pestania-noticias">
+            <section id="seccion-noticias">
+                <h2>📰 Noticias</h2>
+                <div id="lista-noticias">
+                    <p style="color:#8b9bb0">Todavía no hay noticias. Jugá algunas fechas para ver titulares.</p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Modal de bienvenida -->
+    <div id="modal-bienvenida" class="modal-oculto">
+        <div class="modal-caja">
+            <h3>🏛️ AFA Manager</h3>
+            <p id="bienvenida-texto"></p>
+            <div id="bienvenida-opciones"></div>
+        </div>
+    </div>
+
+    <!-- Modal de decisiones -->
+    <div id="modal-decision" class="modal-oculto">
+        <div class="modal-caja">
+            <h3 id="decision-titulo"></h3>
+            <p id="decision-descripcion"></p>
+            <div id="decision-opciones"></div>
+        </div>
+    </div>
+
+    <!-- Modal de introducción -->
+    <div id="modal-intro" class="modal-oculto">
+        <div class="modal-caja">
+            <h3>🏛️ AFA Manager · 2026</h3>
+            <div id="intro-cuerpo">
+                <p><em>Estados Unidos, julio de 2026.</em> La Selección cayó 1-0 en la final del Mundial. Dos días después, <strong>Lionel Messi anunció su retiro de la Selección</strong>: <em>"Me vacié, ya no tengo más para dar"</em>.</p>
+                <p><strong>Lionel Scaloni</strong> comunicó que no renovará su contrato, que vence en diciembre. Necesita parar. El ciclo más exitoso de la historia reciente se cierra.</p>
+                <p>La AFA está en crisis. Los clubes desconfían, la prensa especula, y el fútbol argentino busca un rumbo. <strong>Vos acabás de asumir como presidente.</strong></p>
+                <p>Tu primera decisión es la más importante: <strong>elegir al DT que lidere la era post-Messi.</strong></p>
+            </div>
+            <button id="btn-intro-continuar" class="btn-accion">Ver candidatos →</button>
+        </div>
+    </div>
+
+    <!-- Modal de elección de DT -->
+    <div id="modal-dt" class="modal-oculto">
+        <div class="modal-caja modal-ancho">
+            <h3>🎯 Elegí al DT de la Selección</h3>
+            <p class="subtitulo-modal">Esta decisión definirá tu era. No se puede deshacer.</p>
+            <div id="lista-candidatos"></div>
+        </div>
+    </div>
+
+    <!-- Modal VAR -->
+    <div id="modal-var" class="modal-oculto">
+        <div class="modal-caja">
+            <h3>📺 Decisión sobre el VAR</h3>
+            <p>El VAR reduce los errores arbitrales a la mitad, pero tiene un costo elevado. Los clubes grandes lo piden; los chicos temen el gasto.</p>
+            <p><strong>Costo de activación:</strong> -$2.000M<br>
+            <strong>Costo anual de mantenimiento:</strong> -$500M<br>
+            <strong>Efecto:</strong> Reduce los errores arbitrales en un 50%.</p>
+            <div id="var-opciones">
+                <button class="opcion-decision" id="btn-var-activar">
+                    <strong>Activar el VAR</strong>
+                    <span class="opcion-resumen">-$2.000M ahora, -$500M por año. Menos errores arbitrales.</span>
+                </button>
+                <button class="opcion-decision" id="btn-var-rechazar">
+                    <strong>No activar el VAR por ahora</strong>
+                    <span class="opcion-resumen">Sin costos. Se puede revisar cada año.</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de sponsors -->
+    <div id="modal-sponsors" class="modal-oculto">
+        <div class="modal-caja modal-ancho">
+            <h3>💼 Ofertas de Sponsors</h3>
+            <p>Elegí al sponsor principal de la AFA para este año.</p>
+            <div id="lista-sponsors"></div>
+        </div>
+    </div>
+
+    <!-- Modal de incidencia arbitral -->
+    <div id="modal-incidencia" class="modal-oculto">
+        <div class="modal-caja">
+            <h3 id="incidencia-titulo">⚖️ Escándalo arbitral</h3>
+            <p id="incidencia-descripcion"></p>
+            <p>¿Qué hacés como presidente de la AFA?</p>
+            <div id="incidencia-opciones"></div>
+        </div>
+    </div>
+
+    <!-- Modal de evento aleatorio -->
+    <div id="modal-evento" class="modal-oculto">
+        <div class="modal-caja">
+            <h3 id="evento-titulo"></h3>
+            <p id="evento-descripcion"></p>
+            <div id="evento-opciones"></div>
+        </div>
+    </div>
+
+    <!-- Modal de designación de árbitro para clásicos -->
+    <div id="modal-designacion" class="modal-oculto">
+        <div class="modal-caja modal-ancho">
+            <h3>⚖️ Elegí al árbitro para el clásico</h3>
+            <p id="designacion-partido"></p>
+            <p style="color:#8b9bb0;font-size:0.9em">
+                Elegí con cuidado. Un árbitro malo puede incidir en el resultado, y la prensa no perdona.
+            </p>
+            <div id="designacion-opciones"></div>
+        </div>
+    </div>
+
+    <!-- Modal de conferencia de prensa -->
+    <div id="modal-conferencia" class="modal-oculto">
+        <div class="modal-caja modal-ancho">
+            <h3 id="conferencia-titulo">🎤 Conferencia de prensa</h3>
+            <div id="conferencia-cuerpo"></div>
+        </div>
+    </div>
+
+    <!-- Modal de fin de temporada -->
+    <div id="modal-fin" class="modal-oculto">
+        <div class="modal-caja modal-ancho">
+            <h3 id="modal-fin-titulo"></h3>
+            <div id="modal-fin-cuerpo"></div>
+            <button id="btn-fin-accion" class="btn-accion">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Scripts EN ORDEN -->
+    <script src="js/imagenes.js"></script>
+    <script src="js/sonidos.js"></script>
+    <script src="js/frases.js"></script>
+    <script src="js/ligas.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/partido.js"></script>
+    <script src="js/arbitros.js"></script>
+    <script src="js/liga.js"></script>
+    <script src="js/presidente.js"></script>
+    <script src="js/decisiones.js"></script>
+    <script src="js/finanzas.js"></script>
+    <script src="js/fin_temporada.js"></script>
+    <script src="js/seleccion.js"></script>
+    <script src="js/seleccion_partidos.js"></script>
+    <script src="js/copa_america.js"></script>
+    <script src="js/continentales.js"></script>
+    <script src="js/ranking_fifa.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/encuestas.js"></script>
+    <script src="js/eventos.js"></script>
+    <script src="js/prensa.js"></script>
+    <script src="js/guardado.js"></script>
+    <script src="js/interfaz.js"></script>
+    <script src="js/juego.js"></script>
+</body>
+</html>
